@@ -1,0 +1,73 @@
+{
+  "name": "hapi-socketio-redis-chat-example",
+  "version": "5.0.0",
+  "description": "Real-time Chat in Hapi.js & Socket.io with Redis Pub/Sub Backend for Linear Scalability",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwyl/hapi-socketio-redis-chat-example.git"
+  },
+  "keywords": [
+    "hapi",
+    "hapi.js",
+    "node",
+    "chat",
+    "real-time",
+    "socket.io",
+    "redis",
+    "pubsub",
+    "publish",
+    "subscribe",
+    "scalable"
+  ],
+  "author": "@dwyl & friends",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/dwyl/hapi-socketio-redis-chat-example/issues"
+  },
+  "homepage": "https://github.com/dwyl/hapi-socketio-redis-chat-example#readme",
+  "dependencies": {
+    "elm-test": "^0.18.6",
+    "hapi": "^16.1.1",
+    "hapi-error": "^1.8.0",
+    "inert": "^4.2.0",
+    "redis-connection": "^5.0.0",
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^2.0.3"
+  },
+  "devDependencies": {
+    "decache": "^4.1.0",
+    "goodparts": "^1.2.1",
+    "istanbul": "^0.4.1",
+    "jsdoc": "^3.4.3",
+    "nodemon": "^1.11.0",
+    "pre-commit": "1.2.2",
+    "redis-commander": "^0.4.3",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
+  },
+  "scripts": {
+    "docs": "./node_modules/jsdoc/jsdoc.js ./lib/*.js",
+    "quick": "PORT=8000 ./node_modules/tape/bin/tape ./test/*.js",
+    "test": "PORT=8000 ./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js",
+    "coverage": "PORT=8000 ./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js && ./node_modules/.bin/istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
+    "lint": "node_modules/.bin/goodparts lib",
+    "fix": "node_modules/.bin/goodparts lib --fix",
+    "open-coverage": "open ./coverage/lcov-report/index.html",
+    "redis-admin": "npm install redis-commander && node_modules/.bin/redis-commander",
+    "retest": "PORT=8000 node_modules/.bin/nodemon ./node_modules/.bin/istanbul cover ./node_modules/tape/bin/tape ./test/*.js | node_modules/tap-spec/bin/cmd.js",
+    "relint": "node_modules/.bin/nodemon node_modules/.bin/goodparts lib",
+    "spec": "PORT=8000 node ./node_modules/tape/bin/tape ./test/*.js | node_modules/tap-spec/bin/cmd.js",
+    "local": "PORT=8000 ./node_modules/.bin/nodemon ./server.js",
+    "start": "node ./server.js",
+    "local-elm": "elm-make ./elm/src/Main.elm --output=./elm/js/app.js && PORT=8000 ./node_modules/.bin/nodemon ./server.js",
+    "test-elm": "elm-test"
+  },
+  "pre-commit": [
+    "lint",
+    "coverage"
+  ],
+  "engines": {
+    "node": ">=6.9.1"
+  }
+}
