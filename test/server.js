@@ -6,7 +6,7 @@ var dir     = __dirname.split('/')[__dirname.split('/').length-1];
 var file    = dir + __filename.replace(__dirname, '') + ' ->';
 
 var server = require('../server.js');
-var chat   = require('../lib/chat.js');
+var chat   = require('../src/index.js');
 
 test(file + " GET / returns status 200", function(t) {
   var options = {

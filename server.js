@@ -41,7 +41,7 @@ server.register([require('inert'), require('hapi-error')], function() {
   ]);
 
   server.start(function() {
-    require('./lib/chat').init(server.listener, function() {
+    require('./src/socket/index.js').init(server.listener, function() {
       // console.log('REDISCLOUD_URL:', process.env.REDISCLOUD_URL);
       console.log(
         'Feeling Chatty?',
@@ -51,4 +51,4 @@ server.register([require('inert'), require('hapi-error')], function() {
   });
 });
 
-module.exports = server;
+ module.exports = server;
